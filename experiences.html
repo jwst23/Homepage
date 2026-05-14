@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AETHERIA | NEURAL FEEDBACK</title>
+    <title>AI EXPERIENCES | AETHERIA AI Grand Hotel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script type="module" src="js/firebase-board.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body style="overflow-y: auto;">
+<body>
     <div class="custom-cursor" id="custom-cursor"></div>
     <div class="noise-overlay"></div>
     
@@ -39,29 +39,50 @@
                 <ul>
                     <li><a href="index.html">THE HOTEL</a></li>
                     <li><a href="accommodation.html">ACCOMMODATION</a></li>
-                    <li><a href="experiences.html">AI EXPERIENCES</a></li>
+                    <li><a href="experiences.html" style="color: var(--accent-blue);">AI EXPERIENCES</a></li>
                     <li><a href="gallery.html">IMAGE GALLERY</a></li>
-                    <li><a href="board.html" style="color: var(--accent-blue);">GUEST NETWORK</a></li>
+                    <li><a href="board.html">GUEST NETWORK</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="board-wrapper">
-        <span class="section-tag" style="text-align: center; display: block;">GUEST NETWORK</span>
-        <h1 class="board-header" style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: 3rem;">NEURAL FEEDBACK</h1>
-        
-        <form id="write-form" class="board-form" style="background: white; border: 1px solid #eee; padding: 3rem; border-radius: 12px; margin-bottom: 5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.04);">
-            <input type="text" id="post-title" placeholder="SUBJECT / NEURAL ID" required style="color: var(--text-dark); border-bottom: 1px solid #eee; padding: 1rem 0;">
-            <input type="text" id="post-author" placeholder="GUEST IDENTIFIER" required style="color: var(--text-dark); border-bottom: 1px solid #eee; padding: 1rem 0;">
-            <textarea id="post-content" rows="4" placeholder="TRANSMIT YOUR THOUGHTS..." required style="color: var(--text-dark); border-bottom: 1px solid #eee; padding: 1rem 0;"></textarea>
-            <button type="submit" class="booking-submit" style="width: 100%; margin-top: 2rem;">TRANSMIT DATA</button>
-        </form>
+    <main>
+        <!-- AI Concierge Section -->
+        <section id="ai-concierge" class="feature-section" style="padding-top: 50px;">
+            <div class="feature-content">
+                <div class="text-block">
+                    <span class="section-tag">PERSONAL ASSISTANT</span>
+                    <h2 class="section-title">MEET AEON, <br>YOUR AI CONCIERGE</h2>
+                    <p>Aeon learns your preferences before you even arrive. From pillow firmness to room temperature and personalized dining, Aeon orchestrates every detail of your stay with mathematical precision.</p>
+                    <ul class="feature-list">
+                        <li>24/7 Cognitive Support</li>
+                        <li>Predictive Request Handling</li>
+                        <li>Instant Language Translation</li>
+                    </ul>
+                </div>
+                <div class="image-block">
+                    <div class="image-wrapper">
+                        <img src="concierge_hd.png" alt="AEON AI Concierge" class="feature-img">
+                        <div class="glass-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <ul id="post-list" class="post-list">
-            <!-- Posts will be loaded here dynamically -->
-        </ul>
-    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Æ AETHERIA</div>
+            <div class="footer-links">
+                <a href="#">PRIVACY</a>
+                <a href="#">TERMS</a>
+                <a href="#">CONTACT</a>
+            </div>
+            <div class="footer-copy">© 2026 AETHERIA AI HOTELS. ALL RIGHTS RESERVED.</div>
+        </div>
+    </footer>
+
     <script src="js/main.js"></script>
 </body>
 </html>

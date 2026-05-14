@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AETHERIA | AI Grand Hotel</title>
-    <meta name="description" content="Experience the future of hospitality at Aetheria, the world's first fully AI-powered luxury hotel. Seamless, smart, and sublime.">
+    <title>DINING | AETHERIA AI Grand Hotel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -19,12 +18,11 @@
             <div class="header-left">
                 <div class="about-link">ABOUT AETHERIA</div>
                 <div class="contact-icons">
-                    <!-- Placeholder icons representing map, phone, mail, chat -->
                     <span>📍</span> <span style="transform: rotate(90deg); display:inline-block;">📞</span> <span>✉️</span> <span>💬</span>
                 </div>
             </div>
             <div class="header-center">
-                <div class="logo-main">A E T H E R I A</div>
+                <div class="logo-main"><a href="index.html" style="text-decoration:none; color:inherit;">A E T H E R I A</a></div>
                 <div class="logo-sub">AI GRAND HOTEL</div>
                 <div class="logo-address">1 Cyber Avenue, Neo-Seoul, +82 2 1234 5678</div>
             </div>
@@ -39,11 +37,11 @@
         <div class="header-bottom">
             <nav class="nav">
                 <ul>
-                    <li><a href="index.html" style="color: var(--accent-blue);">THE HOTEL</a></li>
+                    <li><a href="index.html">THE HOTEL</a></li>
                     <li><a href="accommodation.html">ACCOMMODATION</a></li>
                     <li><a href="experiences.html">AI EXPERIENCES</a></li>
                     <li class="nav-item-has-dropdown">
-                        <a href="dining.html">DINING</a>
+                        <a href="dining.html" style="color: var(--accent-blue);">DINING</a>
                         <div class="mega-menu">
                             <a href="dining.html" class="mega-item">
                                 <img src="img_bar.png" alt="The Aetheria Bar">
@@ -73,48 +71,33 @@
         </div>
     </header>
 
-    <div class="scroll-indicator" id="scroll-indicator">
-        <span class="line"></span>
-        SCROLL TO EXPLORE
-    </div>
-
-    <main class="main-container">
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-            <div class="hero-bg">
-                <img src="hero_wide_hd.png" alt="Aetheria Lobby" class="hero-img">
-            </div>
-            <div class="hero-content">
-                <h2 class="hero-subtitle">WELCOME TO THE FUTURE</h2>
-                <h1 class="hero-title">INTELLIGENT <br><span>HOSPITALITY</span></h1>
-                <p class="hero-description">Where artificial intelligence meets unparalleled luxury. Experience a stay designed by algorithms, perfected by human touch.</p>
-                <div class="cta-group">
-                    <a href="accommodation.html" class="primary-btn">EXPLORE SUITES</a>
-                    <a href="experiences.html" class="secondary-btn">MEET AEON</a>
-                </div>
-            </div>
+    <main>
+        <!-- Dining Hero Section -->
+        <section class="dining-hero">
+            <img src="img_bar.png" alt="The Aetheria Bar">
         </section>
 
-        <!-- Detailed sections have been moved to individual pages -->
-        <!-- Booking Section (Simplified for UI) -->
-        <section id="amenities" class="booking-section">
-            <div class="booking-container">
-                <h2 class="booking-title">RESERVE YOUR REALITY</h2>
-                <div class="booking-grid">
-                    <div class="booking-item">
-                        <span class="item-label">CHECK IN</span>
-                        <span class="item-value">SELECT DATE</span>
-                    </div>
-                    <div class="booking-item">
-                        <span class="item-label">GUESTS</span>
-                        <span class="item-value">2 ADULTS</span>
-                    </div>
-                    <div class="booking-item">
-                        <span class="item-label">PREFERENCE</span>
-                        <span class="item-value">AI OPTIMIZED</span>
-                    </div>
-                    <button class="booking-submit">CHECK AVAILABILITY</button>
-                </div>
+        <!-- Dining Grid Section -->
+        <section class="dining-grid">
+            <div class="dining-card">
+                <img src="img_restaurant.png" alt="Il Ristorante - Neo">
+                <h3>IL RISTORANTE - NEO</h3>
+                <p>Il Ristorante – Neo reinvents the fine dining tradition by fusing algorithmic precision with culinary artistry. Every dish is meticulously crafted by our AI Executive Chef, designed to provide a perfect balance of nutrition, flavor, and visual elegance. Handpicked organic ingredients meet the future of gastronomy in an enchanting, sunlit atmosphere.</p>
+                <a href="#" class="dining-card-btn">DISCOVER</a>
+            </div>
+
+            <div class="dining-card">
+                <img src="img_lounge.png" alt="The Aetheria Lounge">
+                <h3>THE AETHERIA LOUNGE</h3>
+                <p>Set with organic white sofas and marble tables, the Lounge is the ideal location to leaf through a digital archive, relax, or meet with friends. A hidden treasure at the heart of the hotel, it is welcoming for morning synthetic-coffee, afternoon tea, or aperitivo. The perfect setting to sample our latest AI-generated pastries.</p>
+                <a href="#" class="dining-card-btn">DISCOVER</a>
+            </div>
+
+            <div class="dining-card">
+                <img src="img_private.png" alt="Private Dining">
+                <h3>PRIVATE DINING</h3>
+                <p>Entirely furnished with adaptive smart materials, the eight-seat private dining room can be reserved for special occasions and intimate dinner parties. Located with a panoramic view of the neo-cityscape, the environment automatically adjusts lighting and acoustics to match the mood of your gathering, making the space feel uniquely yours.</p>
+                <a href="#" class="dining-card-btn">DISCOVER</a>
             </div>
         </section>
     </main>

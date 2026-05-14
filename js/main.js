@@ -1,98 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Custom Cursor Logic
+    // Custom Cursor Trailer
     const cursor = document.getElementById('custom-cursor');
     
-    if (cursor) {
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
-
-        // Initialize cursor position on first mouse move to prevent jump
-        let isFirstMove = true;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            if (isFirstMove) {
-                cursorX = mouseX;
-                cursorY = mouseY;
-                isFirstMove = false;
-            }
+    document.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.1,
+            ease: "power2.out"
         });
+    });
 
-        // Smooth animation for cursor using GSAP ticker
-        gsap.ticker.add(() => {
-            if (!isFirstMove) {
-                cursorX += (mouseX - cursorX) * 0.15;
-                cursorY += (mouseY - cursorY) * 0.15;
-                gsap.set(cursor, { x: cursorX, y: cursorY });
-            }
-        });
-
-        // Hover effect for interactive elements
-        const hoverElements = document.querySelectorAll('a, button, input, textarea, .about-btn, .bottom-left-action, .post-item, .explore-btn');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-    }
-
-    // Full Page Scroll Logic
-    const scrollWrapper = document.getElementById('scroll-wrapper');
-    if (scrollWrapper) {
-        const sections = document.querySelectorAll('.fullscreen-section');
-        const scrollIndicator = document.getElementById('scroll-indicator');
-        let currentSectionIndex = 0;
-        let isScrolling = false;
-
-        // Initialize first section
-        if(sections.length > 0) sections[0].classList.add('active');
-
-        window.addEventListener('wheel', (e) => {
-            if (isScrolling) return;
-            
-            if (e.deltaY > 0) {
-                // Scroll Down
-                if (currentSectionIndex < sections.length - 1) {
-                    currentSectionIndex++;
-                    updateScroll();
-                }
-            } else {
-                // Scroll Up
-                if (currentSectionIndex > 0) {
-                    currentSectionIndex--;
-                    updateScroll();
-                }
-            }
-        });
-
-        function updateScroll() {
-            isScrolling = true;
-            scrollWrapper.style.transform = `translateY(-${currentSectionIndex * 100}vh)`;
-            
-            // Handle section active classes for animations
-            sections.forEach((sec, index) => {
-                if (index === currentSectionIndex) {
-                    sec.classList.add('active');
-                } else {
-                    sec.classList.remove('active');
-                }
+    // Cursor hover effects
+    const interactiveElements = document.querySelectorAll('a, button, .reserve-btn, .booking-submit, .primary-btn, .secondary-btn');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            gsap.to(cursor, { 
+                scale: 2, 
+                background: "rgba(0, 122, 255, 0.2)",
+                borderColor: "rgba(0, 122, 255, 0.8)",
+                duration: 0.3 
             });
+        });
+        el.addEventListener('mouseleave', () => {
+            gsap.to(cursor, { 
+                scale: 1, 
+                background: "rgba(0, 122, 255, 0.1)",
+                borderColor: "var(--accent-blue)",
+                duration: 0.3 
+            });
+        });
+    });
 
-            // Hide scroll indicator on last section
-            if (scrollIndicator) {
-                if (currentSectionIndex === sections.length - 1) {
-                    scrollIndicator.style.opacity = '0';
-                } else {
-                    scrollIndicator.style.opacity = '0.6';
-                }
-            }
+    // GSAP Scroll Animations
+    gsap.registerPlugin(ScrollTrigger);
 
-            setTimeout(() => {
-                isScrolling = false;
-            }, 1000); // Match CSS transition duration
-        }
-    }
+    // Hero Animations
+    const tl = gsap.timeline();
+    tl.from('.hero-subtitle', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' })
+      .from('.hero-title', { y: 30, opacity: 0, duration: 1.2, ease: 'power3.out' }, '-=0.8')
+      .from('.hero-description', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, '-=1')
+      .from('.cta-group', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.8');
+
+    // Section Animations
+    const sections = document.querySelectorAll('.feature-section');
+    sections.forEach(section => {
+        const textBlock = section.querySelector('.text-block');
+        const imageBlock = section.querySelector('.image-block');
+
+        gsap.from(textBlock, {
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 70%',
+            },
+            x: -50,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power3.out'
+        });
+
+        gsap.from(imageBlock, {
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 70%',
+            },
+            x: 50,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power3.out'
+        });
+    });
+
+    // Parallax effect for hero image
+    gsap.to('.hero-img', {
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        },
+        y: 100,
+        ease: 'none'
+    });
 });

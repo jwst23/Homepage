@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강지우 | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="noise-overlay"></div>
+    
+    <header class="header">
+        <div class="logo">
+            <span class="logo-mark">JW</span> KANG JI-WOO
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="https://www.dongyang.ac.kr/dmu/index.do" target="_blank">학교 소개</a></li>
+                <li><a href="https://www.dongyang.ac.kr/dmu/4495/subview.do" target="_blank">학과 소개</a></li>
+                <li><a href="#">나의 포트폴리오</a></li>
+                <li><a href="#">관련 회사</a></li>
+                <li><a href="#">학교 생활</a></li>
+                <li><a href="board.html">게시판</a></li>
+            </ul>
+        </nav>
+        <div class="about-btn">About</div>
+    </header>
+
+    <div class="scroll-indicator" id="scroll-indicator">
+        Scroll down
+    </div>
+
+    <main class="scroll-wrapper" id="scroll-wrapper">
+        <!-- Section 0: Main Hero -->
+        <section class="fullscreen-section">
+            <div class="sculpture-container">
+                <img src="assets/images/tech_sculpture.png" alt="3D Embossed Tech Sculpture" class="sculpture-img" id="hero-img">
+            </div>
+            
+            <div class="hero-text-container">
+                <h1 class="hero-title" id="hero-title">Creative Space of Kang Ji-woo</h1>
+            </div>
+        </section>
+
+        <!-- Section 1: 학교 소개 -->
+        <section class="fullscreen-section">
+            <div class="section-content">
+                <div class="section-bg-text">01</div>
+                <h2 class="section-title">학교 소개</h2>
+                <p class="section-subtitle">School Introduction</p>
+                <!-- 👉 링크 주소(href="...")를 원하는 페이지로 변경하세요 -->
+                <a href="https://www.dongyang.ac.kr/dmu/index.do" target="_blank" class="explore-btn">자세히 보기</a>
+            </div>
+        </section>
+
+        <!-- Section 2: 학과 소개 -->
+        <section class="fullscreen-section">
+            <div class="section-content">
+                <div class="section-bg-text">02</div>
+                <h2 class="section-title">학과 소개</h2>
+                <p class="section-subtitle">Department Introduction</p>
+                <!-- 👉 링크 주소(href="...")를 원하는 페이지로 변경하세요 -->
+                <a href="https://www.dongyang.ac.kr/dmu/4495/subview.do" target="_blank" class="explore-btn">자세히 보기</a>
+            </div>
+        </section>
+
+        <!-- Section 3: 나의 포트폴리오 -->
+        <section class="fullscreen-section">
+            <div class="section-content">
+                <div class="section-bg-text">03</div>
+                <h2 class="section-title">나의 포트폴리오</h2>
+                <p class="section-subtitle">My Portfolio</p>
+                <!-- 👉 링크 주소(href="...")를 원하는 페이지로 변경하세요 -->
+                <a href="portfolio.html" class="explore-btn">자세히 보기</a>
+            </div>
+        </section>
+
+        <!-- Section 4: 관련 회사 -->
+        <section class="fullscreen-section">
+            <div class="section-content">
+                <div class="section-bg-text">04</div>
+                <h2 class="section-title">관련 회사</h2>
+                <p class="section-subtitle">Related Companies</p>
+                <!-- 👉 링크 주소(href="...")를 원하는 페이지로 변경하세요 -->
+                <a href="companies.html" class="explore-btn">자세히 보기</a>
+            </div>
+        </section>
+
+        <!-- Section 5: 학교 생활 -->
+        <section class="fullscreen-section">
+            <div class="section-content">
+                <div class="section-bg-text">05</div>
+                <h2 class="section-title">학교 생활</h2>
+                <p class="section-subtitle">School Life</p>
+                <!-- 👉 링크 주소(href="...")를 원하는 페이지로 변경하세요 -->
+                <a href="life.html" class="explore-btn">자세히 보기</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="bottom-left-action">
+        See all projects ↗
+    </div>
+    
+    <div class="bottom-right-loader">
+        <svg viewBox="0 0 50 50" class="spinner">
+            <circle cx="25" cy="25" r="20" fill="none" stroke-width="1"></circle>
+        </svg>
+    </div>
+
+    <script>
+        // GSAP Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.fromTo("#hero-img", 
+                { opacity: 0, scale: 0.9, y: 30 }, 
+                { opacity: 1, scale: 1, y: 0, duration: 2, ease: "power3.out" }
+            );
+
+            gsap.fromTo("#hero-title",
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 1.5, delay: 0.5, ease: "power2.out" }
+            );
+
+            // Parallax effect on mouse move
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+                gsap.to("#hero-img", {
+                    x: xAxis,
+                    y: yAxis,
+                    duration: 1,
+                    ease: "power1.out"
+                });
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

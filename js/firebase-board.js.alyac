@@ -63,7 +63,7 @@ if (writeForm) {
         const submitBtn = writeForm.querySelector('button');
 
         try {
-            submitBtn.textContent = 'TRANSMITTING...';
+            submitBtn.textContent = '작성 중...';
             submitBtn.disabled = true;
 
             await addDoc(collection(db, "posts"), {
@@ -76,13 +76,13 @@ if (writeForm) {
             // Reset form and reload list
             writeForm.reset();
             await loadPosts();
-            alert('DATA TRANSMISSION COMPLETE.');
+            alert('게시글이 성공적으로 등록되었습니다.');
             
         } catch (error) {
             console.error("Error adding post: ", error);
-            alert('TRANSMISSION FAILED. CHECK NEURAL LINK.');
+            alert('게시글 등록에 실패했습니다. Firebase Config를 확인하세요.');
         } finally {
-            submitBtn.textContent = 'TRANSMIT DATA';
+            submitBtn.textContent = '게시글 작성';
             submitBtn.disabled = false;
         }
     });
@@ -94,6 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
         loadPosts();
     } else {
-        postList.innerHTML = '<li class="post-item" style="color:#00f2ff">NEURAL LINK NOT ESTABLISHED. PLEASE CONFIGURE SYSTEM.</li>';
+        postList.innerHTML = '<li class="post-item" style="color:#d9534f">Firebase API Key가 설정되지 않았습니다. js/firebase-board.js 파일을 수정해주세요.</li>';
     }
 });
